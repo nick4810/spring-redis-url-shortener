@@ -24,23 +24,25 @@ export default function ShortenForm() {
   }
 
   return (
-    <div>
+    <div className="card">
       <h2>Shorten a URL</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="url-input">URL to shorten</label>
-        <input
-          id="url-input"
-          type="url"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://example.com"
-          required
-        />
-        <button type="submit" disabled={loading}>
+        <div className="form-group">
+          <label htmlFor="url-input">URL to shorten</label>
+          <input
+            id="url-input"
+            type="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="https://example.com"
+            required
+          />
+        </div>
+        <button className="btn-primary" type="submit" disabled={loading}>
           {loading ? 'Shortening...' : 'Shorten'}
         </button>
       </form>
-      {error && <p role="alert">{error}</p>}
+      {error && <p className="alert-error" role="alert">{error}</p>}
       {shortCode && <UrlResult shortCode={shortCode} />}
     </div>
   )

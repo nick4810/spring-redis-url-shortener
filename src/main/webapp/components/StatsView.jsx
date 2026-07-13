@@ -23,32 +23,40 @@ export default function StatsView() {
   }
 
   return (
-    <div>
+    <div className="card">
       <h2>URL Stats</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="stats-input">Short code</label>
-        <input
-          id="stats-input"
-          type="text"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          placeholder="aB3xYz"
-          required
-        />
-        <button type="submit" disabled={loading}>
+        <div className="form-group">
+          <label htmlFor="stats-input">Short code</label>
+          <input
+            id="stats-input"
+            type="text"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            placeholder="aB3xYz"
+            required
+          />
+        </div>
+        <button className="btn-primary" type="submit" disabled={loading}>
           {loading ? 'Loading...' : 'Get Stats'}
         </button>
       </form>
-      {error && <p role="alert">{error}</p>}
+      {error && <p className="alert-error" role="alert">{error}</p>}
       {stats && (
-        <dl>
-          <dt>Original URL</dt>
-          <dd><a href={stats.originalUrl}>{stats.originalUrl}</a></dd>
-          <dt>Click count</dt>
-          <dd>{stats.clickCount}</dd>
-          <dt>Created</dt>
-          <dd>{new Date(stats.createdAt).toLocaleString()}</dd>
-        </dl>
+        <div className="stats-list">
+          <div className="stats-row">
+            <span className="stats-label">Original URL</span>
+            <span className="stats-value"><a href={stats.originalUrl}>{stats.originalUrl}</a></span>
+          </div>
+          <div className="stats-row">
+            <span className="stats-label">Click count</span>
+            <span className="stats-value">{stats.clickCount}</span>
+          </div>
+          <div className="stats-row">
+            <span className="stats-label">Created</span>
+            <span className="stats-value">{new Date(stats.createdAt).toLocaleString()}</span>
+          </div>
+        </div>
       )}
     </div>
   )

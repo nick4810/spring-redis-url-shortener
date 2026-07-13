@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import ShortenForm from './components/ShortenForm'
 import StatsView from './components/StatsView'
+import './index.css'
 
 export default function App() {
   return (

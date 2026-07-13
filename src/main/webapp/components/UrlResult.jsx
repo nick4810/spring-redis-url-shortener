@@ -13,12 +13,14 @@ export default function UrlResult({ shortCode }) {
   }
 
   return (
-    <div>
-      <p>Shortened URL:</p>
-      <a href={shortUrl} target="_blank" rel="noreferrer">
-        {shortUrl}
-      </a>
-      <button onClick={handleCopy}>{copied ? 'Copied!' : 'Copy'}</button>
+    <div className="url-result">
+      <p>Shortened URL</p>
+      <div className="url-result-row">
+        <a href={shortUrl} target="_blank" rel="noreferrer">
+          {shortUrl}
+        </a>
+        <button className="btn-secondary" onClick={handleCopy}>{copied ? 'Copied!' : 'Copy'}</button>
+      </div>
     </div>
   )
 }
